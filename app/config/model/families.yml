@@ -1,0 +1,34 @@
+sidus_eav_model:
+    families:
+        project:
+            attributeAsLabel: name
+            attributes:
+                - code
+                - name
+                - status
+                - description
+                - releaseDate
+                - fullDescription
+                - associatedProjects
+                - associatedProjectAutocomplete
+                - tags
+
+        product:
+            attributeAsLabel: name
+            attributes:
+                - sku
+                - name
+                - barCode
+                - constructorReference
+
+        clothing:
+            parent: product
+            attributes:
+                - description
+                - internationalClothingSize
+                - basicColor
+
+        shirt:
+            parent: clothing
+            attributes:
+                - modelDescription

@@ -1,0 +1,70 @@
+sidus_eav_model:
+    attributes:
+        name:
+            required: true
+            form_options:
+                attr:
+                    data-help: 'This is a help block'
+        code:
+            type: unique
+            required: true
+        description:
+            type: text
+        releaseDate:
+            type: date
+        fullDescription:
+            type: html
+            form_options:
+                attr:
+                    class: tinymce
+                    data-theme: advanced
+        associatedProjects:
+            type: data
+            multiple: true
+            form_options:
+                placeholder: 'Select a project'
+                family_code: project
+        associatedProjectAutocomplete:
+            type: autocomplete_data
+            form_options:
+                placeholder: 'Select a project'
+                family_code: project
+                attr:
+                    class: select2
+        tags:
+            multiple: true
+        status:
+            type: choice
+            form_options:
+                choices:
+                    disabled: Disabled
+                    draft: Draft
+                    to_validate: To Validate
+                    validated: Validated
+                    published: Published
+
+        sku:
+            type: unique
+            required: true
+        constructorReference:
+            type: string
+        barCode:
+            type: string
+        internationalClothingSize:
+            type: choice
+            form_options:
+                choices:
+                    XS: XS
+                    S: S
+                    M: M
+                    L: L
+                    XL: XL
+                    XXL: XXL
+        basicColor:
+            type: choice
+        modelDescription:
+            type: html
+            form_options:
+                attr:
+                    class: tinymce
+                    data-theme: advanced

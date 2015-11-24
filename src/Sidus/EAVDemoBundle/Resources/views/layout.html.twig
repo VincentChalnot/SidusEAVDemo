@@ -1,0 +1,78 @@
+{% extends "LAGAdminBundle::admin.layout.html.twig" %}
+
+{% block stylesheets %}
+    {% stylesheets  'bundles/siduseavmodel/sass/sidus.css'
+                    'bundles/pinanoselect2/css/select2.css'
+                    'bundles/pinanoselect2/css/select2-bootstrap.css'
+                    'bundles/samsonautocomplete/css/autocomplete.css'
+            filter='cssrewrite, ?cssmin' output="css/cms.css" %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block mainTitle %}
+    <a href="#" class="navbar-brand">Sidus</a>
+{% endblock %}
+
+{% block topMenuItems %}
+    {% if admin.hasAction('list') %}
+        <li>
+            <a href="{{ path(admin.action('list').route) }}">
+                <i class="fa fa-list"></i>
+                {{ admin.action('list').title  | trans }}</a>
+        </li>
+    {% endif %}
+    {% if admin.hasAction('create') %}
+        <li>
+            <a href="{{ path(admin.action('create').route) }}">
+                <i class="fa fa-plus"></i>
+                {{ admin.action('create').title | trans }}</a>
+        </li>
+    {% endif %}
+    {% include 'LAGAdminBundle:Action:customActions.html.twig' %}
+{% endblock %}
+
+{% block leftMenu %}
+    <div role="navigation" class="navbar-default sidebar">
+        <div class="sidebar-nav navbar-collapse">
+            <ul id="side-menu" class="nav in">
+                <li class="{{ getClassForRoute('sidus.admin.eav.list') }}">
+                    <a href="{{ path('sidus.admin.eav.list') }}">
+                        <i class="fa fa-newspaper-o"></i> EAV Admin</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ tinymce_init() }}
+    {% javascripts
+            'bundles/pinanoselect2/js/select2.min.js'
+            'bundles/pinanoselect2/js/select2_locale_fr.js'
+            'bundles/samsonautocomplete/js/autocomplete.js'
+            'bundles/siduseavmodel/js/bootstrap.collection.js'
+        %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        RegExp.escape= function(s) {
+            return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+        };
+        $(document).ready(function(){
+            /* Initialize bootstrap collection sortable */
+            $('.bootstrap-collection').sortable({
+                update: function () {
+                    var pattern = $(this).data('input-pattern');
+                    var regex = new RegExp(RegExp.escape(pattern).replace('__name__', '\\d+'));
+                    $(this).find(':input').each(function (idx) {
+                        var newName = $(this).attr('name').replace(regex, pattern.replace('__name__', idx));
+                        $(this).attr('name', newName);
+                    });
+                }
+            });
+
+            $(".select2").samsonSelect2();
+        });
+    </script>
+{% endblock %}
