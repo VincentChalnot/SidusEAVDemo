@@ -1032,16 +1032,16 @@
         },
         {
             "name": "gedmo/doctrine-extensions",
-            "version": "v2.4.7",
+            "version": "v2.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Atlantic18/DoctrineExtensions.git",
-                "reference": "1a86ba1c7426238b4f765089e0af51174a38af7f"
+                "reference": "096ed89496f8adab9a57aaf0e3624c3407f64d4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/1a86ba1c7426238b4f765089e0af51174a38af7f",
-                "reference": "1a86ba1c7426238b4f765089e0af51174a38af7f",
+                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/096ed89496f8adab9a57aaf0e3624c3407f64d4f",
+                "reference": "096ed89496f8adab9a57aaf0e3624c3407f64d4f",
                 "shasum": ""
             },
             "require": {
@@ -1107,7 +1107,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2015-09-28 16:39:27"
+            "time": "2015-11-25 05:46:30"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1851,12 +1851,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/VincentChalnot/SidusEAVModelBundle.git",
-                "reference": "9927e56c8067705c7ca25dedfa20afd5f4f3cb17"
+                "reference": "557cfc077ec90c333b64be513f68c6b9f0c007dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VincentChalnot/SidusEAVModelBundle/zipball/9927e56c8067705c7ca25dedfa20afd5f4f3cb17",
-                "reference": "9927e56c8067705c7ca25dedfa20afd5f4f3cb17",
+                "url": "https://api.github.com/repos/VincentChalnot/SidusEAVModelBundle/zipball/557cfc077ec90c333b64be513f68c6b9f0c007dd",
+                "reference": "557cfc077ec90c333b64be513f68c6b9f0c007dd",
                 "shasum": ""
             },
             "require": {
@@ -1890,7 +1890,7 @@
                 "eav",
                 "model"
             ],
-            "time": "2015-11-22 21:39:54"
+            "time": "2015-11-25 09:17:11"
         },
         {
             "name": "stephanecollot/datetimepicker-bundle",
