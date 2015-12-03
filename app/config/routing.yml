@@ -1,3 +1,6 @@
 blue_bear_admin:
     resource: .
     type: extra
+
+sidus_eavdemo:
+    resource: @SidusEAVDemoBundle/Resources/config/routing.yml

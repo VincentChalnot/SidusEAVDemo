@@ -1,0 +1,3 @@
+sidus_eavdemo.dashboard:
+    path:     /
+    defaults: { _controller: SidusEAVDemoBundle:Dashboard:dashboard }

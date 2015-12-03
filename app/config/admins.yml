@@ -9,48 +9,4 @@ lag_admin:
             name_pattern: sidus.admin.{admin}.{action}
             url_pattern:  /{admin}/{action}
         date_format: d/m/Y h:i:s
-    admins:
-        eav:
-            entity: Sidus\EAVDemoBundle\Entity\Data
-            form: sidus_data
-            manager: sidus_eav_model.manager.data
-            actions:
-                list:
-                    title: EAV models list
-                    permissions: [ROLE_ADMIN, ROLE_USER]
-                    export: [html, pdf, xls, csv, json]
-                    # this fields will be displayed in the list table
-                    fields:
-                        id: ~
-                        label: ~
-                        createdAt:
-                            type: date
-                        family: ~
-                        _actions:
-                            type: collection
-                            options:
-                                _edit:
-                                    type: action
-                                    options:
-                                        title: Edit
-                                        route: sidus.admin.eav.edit
-                                        parameters: {id: ~}
-                                        icon: pencil
-                                _delete:
-                                    type: action
-                                    options:
-                                        title: Delete
-                                        route: sidus.admin.eav.delete
-                                        parameters: {id: ~}
-                                        icon: remove
-                    actions:
-                        create:
-                            title: 'Create'
-                            route: sidus.admin.eav.create
-                            icon: plus
-                create:
-                    permissions: [ROLE_ADMIN]
-                edit:
-                    permissions: [ROLE_ADMIN]
-                delete:
-                    permissions: [ROLE_ADMIN]
+    admins: []

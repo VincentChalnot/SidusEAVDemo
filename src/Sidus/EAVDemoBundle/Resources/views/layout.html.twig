@@ -36,10 +36,13 @@
     <div role="navigation" class="navbar-default sidebar">
         <div class="sidebar-nav navbar-collapse">
             <ul id="side-menu" class="nav in">
-                <li class="{{ getClassForRoute('sidus.admin.eav.list') }}">
-                    <a href="{{ path('sidus.admin.eav.list') }}">
-                        <i class="fa fa-newspaper-o"></i> EAV Admin</a>
-                </li>
+                {% for family in get_families() %}
+                    {% set route = 'sidus.admin.sidus_' ~ family.code ~ '.list' %}
+                    <li class="{{ getClassForRoute(route) }}">
+                        <a href="{{ path(route) }}">
+                            <i class="fa fa-newspaper-o"></i> {{ family | trans }}</a>
+                    </li>
+                {% endfor %}
             </ul>
         </div>
     </div>
