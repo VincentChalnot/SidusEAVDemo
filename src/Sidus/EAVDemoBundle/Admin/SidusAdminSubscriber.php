@@ -2,7 +2,6 @@
 
 namespace Sidus\EAVDemoBundle\Admin;
 
-use LAG\AdminBundle\Admin\Factory\AdminFactory;
 use LAG\AdminBundle\DependencyInjection\Configuration;
 use LAG\AdminBundle\Event\AdminFactoryEvent;
 use Sidus\EAVModelBundle\Configuration\FamilyConfigurationHandler;
@@ -38,7 +37,7 @@ class SidusAdminSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            AdminFactory::ADMIN_CREATION => 'createAdmins',
+            AdminFactoryEvent::ADMIN_CREATION => 'createAdmins',
         ];
     }
 
