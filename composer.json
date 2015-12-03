@@ -21,7 +21,8 @@
 
         "sidus/eav-model-bundle": "dev-master",
 
-        "lag/adminbundle": "dev-0.3-dev",
+        "sonata-project/admin-bundle": "2.3.*",
+        "sonata-project/doctrine-orm-admin-bundle": "2.3.*",
         "stfalcon/tinymce-bundle": "dev-master",
         "samson/autocomplete-bundle": "~2.0.3",
         "pinano/select2-bundle": "~3.5.2"

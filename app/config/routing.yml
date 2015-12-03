@@ -1,6 +1,8 @@
-blue_bear_admin:
-    resource: .
-    type: extra
+admin_area:
+    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+    prefix: /
 
-sidus_eavdemo:
-    resource: @SidusEAVDemoBundle/Resources/config/routing.yml
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin

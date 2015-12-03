@@ -1,12 +1,6 @@
-# config.yml
-lag_admin:
-    application:
-        title: Sidus EAVModel Demo
-        description: Test bla bla ?
-        bootstrap: true
-        layout: SidusEAVDemoBundle::layout.html.twig
-        routing:
-            name_pattern: sidus.admin.{admin}.{action}
-            url_pattern:  /{admin}/{action}
-        date_format: d/m/Y h:i:s
-    admins: []
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]

@@ -18,19 +18,22 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
             // Additionnal Bundles
-            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             new Samson\Bundle\UnexpectedResponseBundle\SamsonUnexpectedResponseBundle(),
             new Samson\Bundle\AutocompleteBundle\SamsonAutocompleteBundle(),
             new Pinano\Select2Bundle\PinanoSelect2Bundle(),
 
-            // BlueBear
-            new BlueBear\BaseBundle\BlueBearBaseBundle(),
-            new LAG\AdminBundle\LAGAdminBundle(),
+            //Sonata
+            new Sonata\CoreBundle\SonataCoreBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new Sonata\AdminBundle\SonataAdminBundle(),
 
             // Custom bundles
             new Sidus\EAVModelBundle\SidusEAVModelBundle(),
             new Sidus\EAVDemoBundle\SidusEAVDemoBundle(),
+            new Sidus\AdminBundle\SidusAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

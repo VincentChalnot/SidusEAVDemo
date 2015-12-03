@@ -39,7 +39,6 @@ twig:
     strict_variables: "%kernel.debug%"
     form:
         resources:
-            - LAGAdminBundle:Form:fields.html.twig
             - SidusEAVModelBundle:Form:fields.html.twig
 
 # Assetic Configuration

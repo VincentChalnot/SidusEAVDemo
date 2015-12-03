@@ -1,0 +1,35 @@
+parameters:
+    sidus_admin.admin.data.class: Sidus\AdminBundle\Admin\DataAdmin
+
+services:
+    sidus_admin.admin.project:
+        class: %sidus_admin.admin.data.class%
+        arguments: [~, %sidus_eav_model.entity.data.class%, ~]
+        calls:
+            - [setFamilyCode, ['project']]
+        tags:
+            - { name: sonata.admin, manager_type: orm }
+
+    sidus_admin.admin.product:
+        class: %sidus_admin.admin.data.class%
+        arguments: [~, %sidus_eav_model.entity.data.class%, ~]
+        calls:
+            - [setFamilyCode, ['product']]
+        tags:
+            - { name: sonata.admin, manager_type: orm }
+
+    sidus_admin.admin.clothing:
+        class: %sidus_admin.admin.data.class%
+        arguments: [~, %sidus_eav_model.entity.data.class%, ~]
+        calls:
+            - [setFamilyCode, ['clothing']]
+        tags:
+            - { name: sonata.admin, manager_type: orm }
+
+    sidus_admin.admin.shirt:
+        class: %sidus_admin.admin.data.class%
+        arguments: [~, %sidus_eav_model.entity.data.class%, ~]
+        calls:
+            - [setFamilyCode, ['shirt']]
+        tags:
+            - { name: sonata.admin, manager_type: orm }
