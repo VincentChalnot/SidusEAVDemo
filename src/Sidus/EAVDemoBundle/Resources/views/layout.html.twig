@@ -1,81 +1,49 @@
-{% extends "LAGAdminBundle::admin.layout.html.twig" %}
+<!DOCTYPE html>{% import "@SidusEAVDemo/Macros/utilities.html.twig" as utilities %}
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="{{ _charset }}">
+    <title>{% block title %}Sidus{{ title is defined ? ' - ' ~ title }}{% endblock %}</title>
+    {% block metas %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="sidus">
+        <meta name="author" content="Vincent Chalnot">
+    {% endblock %}
+    {% block stylesheets %}
+        {% stylesheets  'bundles/siduseavdemo/css/sidus.css'
+                filter='?uglifycss' filter='cssrewrite' %}
+            <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+        {% endstylesheets %}
+    {% endblock %}
+</head>
+<body>
+<div class="container">
+    {% block main_container %}
+        {% block main_menu %}
 
-{% block stylesheets %}
-    {% stylesheets  'bundles/siduseavmodel/sass/sidus.css'
-                    'bundles/pinanoselect2/css/select2.css'
-                    'bundles/pinanoselect2/css/select2-bootstrap.css'
-                    'bundles/samsonautocomplete/css/autocomplete.css'
-            filter='cssrewrite, ?cssmin' output="css/cms.css" %}
-        <link rel="stylesheet" href="{{ asset_url }}"/>
-    {% endstylesheets %}
-{% endblock %}
-
-{% block mainTitle %}
-    <a href="#" class="navbar-brand">Sidus</a>
-{% endblock %}
-
-{% block topMenuItems %}
-    {% if admin.hasAction('list') %}
-        <li>
-            <a href="{{ path(admin.action('list').route) }}">
-                <i class="fa fa-list"></i>
-                {{ admin.action('list').title  | trans }}</a>
-        </li>
-    {% endif %}
-    {% if admin.hasAction('create') %}
-        <li>
-            <a href="{{ path(admin.action('create').route) }}">
-                <i class="fa fa-plus"></i>
-                {{ admin.action('create').title | trans }}</a>
-        </li>
-    {% endif %}
-    {% include 'LAGAdminBundle:Action:customActions.html.twig' %}
-{% endblock %}
-
-{% block leftMenu %}
-    <div role="navigation" class="navbar-default sidebar">
-        <div class="sidebar-nav navbar-collapse">
-            <ul id="side-menu" class="nav in">
-                {% for family in get_families() %}
-                    {% set route = 'sidus.admin.sidus_' ~ family.code ~ '.list' %}
-                    <li class="{{ getClassForRoute(route) }}">
-                        <a href="{{ path(route) }}">
-                            <i class="fa fa-newspaper-o"></i> {{ family | trans }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
+        {% endblock %}
+        <div class="container-fluid">
+            {{ utilities.flash_messages() }}
+            {% block main_content %}{% endblock %}
         </div>
-    </div>
-{% endblock %}
+    {% endblock %}
+</div>
 
 {% block javascripts %}
-    {{ tinymce_init() }}
     {% javascripts
-            'bundles/pinanoselect2/js/select2.min.js'
-            'bundles/pinanoselect2/js/select2_locale_fr.js'
-            'bundles/samsonautocomplete/js/autocomplete.js'
-            'bundles/siduseavmodel/js/bootstrap.collection.js'
+            'assets/jquery/jquery.min.js'
+            'assets/jquery-ui/ui/minified/core.min.js'
+            'assets/jquery-ui/ui/minified/widget.min.js'
+            'assets/jquery-ui/ui/minified/mouse.min.js'
+            'assets/jquery-ui/ui/minified/sortable.min.js'
+            '@MopaBootstrapBundle/Resources/public/bootstrap-sass/assets/javascripts/bootstrap.js'
+            '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
+            '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
+            '@MopaBootstrapBundle/Resources/public/components/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.js'
+            '@MopaBootstrapBundle/Resources/public/components/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.fr.js'
+            filter='?uglifyjs2'
         %}
-        <script src="{{ asset_url }}"></script>
+        <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
-    <script>
-        RegExp.escape= function(s) {
-            return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-        };
-        $(document).ready(function(){
-            /* Initialize bootstrap collection sortable */
-            $('.bootstrap-collection').sortable({
-                update: function () {
-                    var pattern = $(this).data('input-pattern');
-                    var regex = new RegExp(RegExp.escape(pattern).replace('__name__', '\\d+'));
-                    $(this).find(':input').each(function (idx) {
-                        var newName = $(this).attr('name').replace(regex, pattern.replace('__name__', idx));
-                        $(this).attr('name', newName);
-                    });
-                }
-            });
-
-            $(".select2").samsonSelect2();
-        });
-    </script>
 {% endblock %}
+</body>
+</html>

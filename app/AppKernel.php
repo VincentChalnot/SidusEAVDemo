@@ -17,6 +17,9 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
+            // Bootstrap layout
+            new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
+
             // Additionnal Bundles
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
@@ -24,13 +27,10 @@ class AppKernel extends Kernel
             new Samson\Bundle\AutocompleteBundle\SamsonAutocompleteBundle(),
             new Pinano\Select2Bundle\PinanoSelect2Bundle(),
 
-            // BlueBear
-            new BlueBear\BaseBundle\BlueBearBaseBundle(),
-            new LAG\AdminBundle\LAGAdminBundle(),
-
-            // Custom bundles
+            // Sidus bundles
             new Sidus\EAVModelBundle\SidusEAVModelBundle(),
             new Sidus\EAVDemoBundle\SidusEAVDemoBundle(),
+            new Sidus\FilterBundle\SidusFilterBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

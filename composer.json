@@ -1,5 +1,5 @@
 {
-    "name": "vchalnot/sidus.eavmodeldemo",
+    "name": "vchalnot/sidus_eavmodeldemo",
     "license": "proprietary",
     "type": "project",
     "autoload": {
@@ -19,10 +19,17 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
 
-        "sidus/eav-model-bundle": "dev-master",
+        "mopa/bootstrap-bundle": "~3.0",
+        "twbs/bootstrap-sass": "~3.3.0",
+        "components/jquery": "~1.11",
+        "components/jqueryui": "~1.11",
+        "robloach/component-installer": "~0.2",
 
-        "lag/adminbundle": "dev-0.3-dev",
+        "sidus/eav-model-bundle": "dev-master",
+        "sidus/filter-bundle": "dev-master",
+
         "stfalcon/tinymce-bundle": "dev-master",
+        "white-october/pagerfanta-bundle": "~1.0",
         "samson/autocomplete-bundle": "~2.0.3",
         "pinano/select2-bundle": "~3.5.2"
     },
@@ -37,7 +44,8 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
+            "Mopa\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::postInstallSymlinkTwitterBootstrapSass"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
@@ -45,16 +53,19 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
+            "Mopa\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::postInstallSymlinkTwitterBootstrapSass"
         ]
     },
     "config": {
-        "bin-dir": "bin"
+        "bin-dir": "bin",
+        "component-dir": "web/assets",
+        "component-baseurl": "/assets"
     },
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
-        "symfony-assets-install": "relative",
+        "symfony-assets-install": "symlink",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         }

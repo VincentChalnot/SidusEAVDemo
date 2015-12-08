@@ -2,7 +2,6 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: admins.yml }
     - { resource: model/application.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -39,7 +38,6 @@ twig:
     strict_variables: "%kernel.debug%"
     form:
         resources:
-            - LAGAdminBundle:Form:fields.html.twig
             - SidusEAVModelBundle:Form:fields.html.twig
 
 # Assetic Configuration
