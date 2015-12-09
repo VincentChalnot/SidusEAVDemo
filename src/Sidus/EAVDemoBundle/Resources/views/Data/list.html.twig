@@ -1,0 +1,30 @@
+{% extends 'SidusEAVDemoBundle:Data:index.html.twig' %}
+
+{% block middle_content %}
+    {{ form_start(form) }}
+        {{ form_widget(form.filters) }}
+        <table class="table table-striped">
+            <caption>{{ pager.count }} results</caption>
+            <thead>
+                <tr>
+                    <th>#{{ form_widget(form.sortable.id) }}</th>
+                    <th>Family{{ form_widget(form.sortable.familyCode) }}</th>
+                    <th>{{ family.attributeAsLabel }}{{ form_widget(form.sortable['value.' ~ family.attributeAsLabel.code]) }}</th>
+                    <th>Created{{ form_widget(form.sortable.createdAt) }}</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in datas %}
+                    <tr>
+                        <td>{{ data.id }}</td>
+                        <td>{{ data.family }}</td>
+                        <td>{{ data }}</td>
+                        <td>{{ data.createdAt | date() }}</td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {{ form_end(form) }}
+{% endblock %}

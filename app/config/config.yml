@@ -39,6 +39,7 @@ twig:
     form:
         resources:
             - SidusEAVModelBundle:Form:fields.html.twig
+            - SidusFilterBundle:Form:fields.html.twig
 
 # Assetic Configuration
 assetic:
@@ -83,3 +84,6 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+mopa_bootstrap:
+    form: ~

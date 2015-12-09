@@ -1744,12 +1744,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/VincentChalnot/SidusEAVModelBundle.git",
-                "reference": "557cfc077ec90c333b64be513f68c6b9f0c007dd"
+                "reference": "a125be9e0705dd85f4d17d74664c0f3358842abf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VincentChalnot/SidusEAVModelBundle/zipball/557cfc077ec90c333b64be513f68c6b9f0c007dd",
-                "reference": "557cfc077ec90c333b64be513f68c6b9f0c007dd",
+                "url": "https://api.github.com/repos/VincentChalnot/SidusEAVModelBundle/zipball/a125be9e0705dd85f4d17d74664c0f3358842abf",
+                "reference": "a125be9e0705dd85f4d17d74664c0f3358842abf",
                 "shasum": ""
             },
             "require": {
@@ -1783,7 +1783,7 @@
                 "eav",
                 "model"
             ],
-            "time": "2015-11-25 09:17:11"
+            "time": "2015-12-09 18:57:55"
         },
         {
             "name": "sidus/filter-bundle",
@@ -1792,12 +1792,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/VincentChalnot/SidusFilterBundle.git",
-                "reference": "17aaa5a47b48b4aa086eb7ee15edf3cfe13fb1d9"
+                "reference": "3a6ddd5379120b1982797d1d6d2ce9331e83d5f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VincentChalnot/SidusFilterBundle/zipball/17aaa5a47b48b4aa086eb7ee15edf3cfe13fb1d9",
-                "reference": "17aaa5a47b48b4aa086eb7ee15edf3cfe13fb1d9",
+                "url": "https://api.github.com/repos/VincentChalnot/SidusFilterBundle/zipball/3a6ddd5379120b1982797d1d6d2ce9331e83d5f2",
+                "reference": "3a6ddd5379120b1982797d1d6d2ce9331e83d5f2",
                 "shasum": ""
             },
             "require": {
@@ -1831,7 +1831,7 @@
                 "filter",
                 "sort"
             ],
-            "time": "2015-12-08 17:20:14"
+            "time": "2015-12-09 10:58:13"
         },
         {
             "name": "stfalcon/tinymce-bundle",

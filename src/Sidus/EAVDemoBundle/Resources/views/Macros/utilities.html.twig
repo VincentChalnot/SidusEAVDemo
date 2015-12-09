@@ -9,3 +9,14 @@
         {% endfor %}
     {% endfor %}
 {% endmacro %}
+
+{% macro menu_link(titre, route, routes, parameters) %}
+    {% if routes is defined and routes %}
+        {% set routes = routes | merge([route]) %}
+    {% else %}
+        {% set routes = [route] %}
+    {% endif %}
+    <li {% if app.request.attributes.get('_route') in routes %}class="active"{% endif %}>
+        <a href="{{ path(route, parameters|default({})) }}">{{ titre }}</a>
+    </li>
+{% endmacro %}

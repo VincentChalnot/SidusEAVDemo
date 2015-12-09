@@ -1,3 +1,11 @@
 sidus_eavdemo.dashboard:
     path:     /
     defaults: { _controller: SidusEAVDemoBundle:Dashboard:dashboard }
+
+sidus_eavdemo.data.index:
+    path:     /data
+    defaults: { _controller: SidusEAVDemoBundle:Data:index }
+
+sidus_eavdemo.data.list:
+    path:     /data/{familyCode}/list
+    defaults: { _controller: SidusEAVDemoBundle:Data:list }

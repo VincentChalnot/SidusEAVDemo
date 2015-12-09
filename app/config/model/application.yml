@@ -1,3 +1,4 @@
 imports:
     - { resource: attributes.yml }
     - { resource: families.yml }
+    - { resource: filters.yml }
