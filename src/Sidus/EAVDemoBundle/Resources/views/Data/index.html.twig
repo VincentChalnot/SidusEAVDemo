@@ -3,7 +3,7 @@
 {% block left_menu %}
     <ul class="nav nav-pills nav-stacked">
         {% for f in get_families() %}
-            <li {% if family.code == f.code %}class="active"{% endif %}>
+            <li {% if family is defined and family.code == f.code %}class="active"{% endif %}>
                 <a href="{{ path('sidus_eavdemo.data.list', {familyCode: f.code}) }}">{{ f }}</a>
             </li>
         {% endfor %}

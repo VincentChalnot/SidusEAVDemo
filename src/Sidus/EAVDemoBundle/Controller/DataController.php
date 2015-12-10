@@ -26,20 +26,28 @@ class DataController extends Controller
      * @param $familyCode
      * @param Request $request
      * @return array
+     * @throws \Exception
      */
     public function listAction($familyCode, Request $request)
     {
         $family = $this->get('sidus_eav_model.family_configuration.handler')->getFamily($familyCode);
         $filterConfigName = 'sidus_filter.configuration.' . $familyCode;
+        $isDefault = false;
         if (!$this->has($filterConfigName)) {
             $filterConfigName = 'sidus_filter.configuration.default';
+            $isDefault = true;
         }
         /** @var FilterConfigurationHandler $filterConfig */
         $filterConfig = $this->get($filterConfigName);
 
+        if ($isDefault) {
+            $filterConfig->addSortable('value.' . $family->getAttributeAsLabel()->getCode());
+        }
+
         $qb = $filterConfig->getQueryBuilder();
         $alias = $filterConfig->getAlias();
-        $qb->addSelect('value')
+        $qb
+            ->addSelect('value')
             ->leftJoin($alias . '.values', 'value') // Manual join on user
             ->andWhere("{$alias}.familyCode IN (:families)")
             ->setParameter('families', $family->getMatchingCodes());

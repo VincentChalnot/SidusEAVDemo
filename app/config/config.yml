@@ -86,4 +86,6 @@ swiftmailer:
     spool:     { type: memory }
 
 mopa_bootstrap:
-    form: ~
+    form:
+        render_required_asterisk: true
+        render_optional_text: false
