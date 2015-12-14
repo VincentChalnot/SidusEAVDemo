@@ -6,7 +6,7 @@ use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sidus\EAVDemoBundle\Entity\Data;
-use Sidus\FilterBundle\Configuration\FilterConfigurationHandler;
+use Sidus\EAVFilterBundle\Configuration\FilterConfigurationHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -31,17 +31,16 @@ class DataController extends Controller
     public function listAction($familyCode, Request $request)
     {
         $family = $this->get('sidus_eav_model.family_configuration.handler')->getFamily($familyCode);
-        $filterConfigName = 'sidus_filter.configuration.' . $familyCode;
+        $filterConfigName = 'sidus_eav_filter.configuration.' . $familyCode;
         $isDefault = false;
         if (!$this->has($filterConfigName)) {
-            $filterConfigName = 'sidus_filter.configuration.default';
-            $isDefault = true;
+            throw new \UnexpectedValueException("Missing filter configuration for family {$family->getCode()}");
         }
         /** @var FilterConfigurationHandler $filterConfig */
         $filterConfig = $this->get($filterConfigName);
 
         if ($isDefault) {
-            $filterConfig->addSortable('value.' . $family->getAttributeAsLabel()->getCode());
+            $filterConfig->addSortable($family->getAttributeAsLabel()->getCode());
         }
 
         $qb = $filterConfig->getQueryBuilder();

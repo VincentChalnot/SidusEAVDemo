@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new Sidus\EAVModelBundle\SidusEAVModelBundle(),
             new Sidus\EAVDemoBundle\SidusEAVDemoBundle(),
             new Sidus\FilterBundle\SidusFilterBundle(),
+            new Sidus\EAVFilterBundle\SidusEAVFilterBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

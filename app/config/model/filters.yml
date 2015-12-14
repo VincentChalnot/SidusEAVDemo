@@ -1,38 +1,27 @@
-sidus_filter:
+sidus_eav_filter:
     configurations:
-        default:
-            entity: %sidus_eav_model.entity.data.class%
-            sortable:
-                - id
-                - familyCode
-                - createdAt
-            fields:
-                id: ~
-                family: ~
-                createdAt: ~
-
         project:
             entity: %sidus_eav_model.entity.data.class%
             sortable:
                 - id
-                - value.code
+                - code
                 - familyCode
                 - createdAt
-                - value.name
+                - name
             fields:
                 code:
-                    attributes: [value.code]
+                    attributes: [code]
                 family: ~
                 name:
-                    attributes: [value.code]
+                    attributes: [code]
                 status:
-                    attributes: [value.status]
+                    attributes: [status]
                 description:
-                    attributes: [value.description, value.fullDescription]
+                    attributes: [description, fullDescription]
                 releaseDate:
                     type: date_range
-                    attributes: [value.releaseDate]
+                    attributes: [releaseDate]
 #                associatedProjects:
-#                    attributes: [value.associatedProjects]
+#                    attributes: [associatedProjects]
 #                tags:
-#                    attributes: [value.tags]
+#                    attributes: [tags]
