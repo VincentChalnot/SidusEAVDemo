@@ -24,10 +24,22 @@
                         <td>{{ data.family }}</td>
                         <td>{{ data }}</td>
                         <td>{{ data.createdAt | date() }}</td>
-                        <td></td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <a href="{{ path('sidus_eavdemo.data.edit', {familyCode: family.code, id: data.id}) }}" class="btn btn-primary">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a href="{{ path('sidus_eavdemo.data.edit', {familyCode: family.code, id: data.id}) }}" class="btn btn-danger">
+                                    <i class="fa fa-remove"></i>
+                                </a>
+                            </div>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     {{ form_end(form) }}
+    <div class="btn-group clear">
+        <a href="{{ path('sidus_eavdemo.data.create', {familyCode: family.code}) }}" class="btn btn-primary"><i class="fa fa-plus"></i> Create</a>
+    </div>
 {% endblock %}

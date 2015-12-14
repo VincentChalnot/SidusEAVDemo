@@ -9,3 +9,11 @@ sidus_eavdemo.data.index:
 sidus_eavdemo.data.list:
     path:     /data/{familyCode}/list
     defaults: { _controller: SidusEAVDemoBundle:Data:list }
+
+sidus_eavdemo.data.create:
+    path:     /data/{familyCode}/create
+    defaults: { _controller: SidusEAVDemoBundle:Data:create }
+
+sidus_eavdemo.data.edit:
+    path:     /data/{familyCode}/{id}/edit
+    defaults: { _controller: SidusEAVDemoBundle:Data:edit }

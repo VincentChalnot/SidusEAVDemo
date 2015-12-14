@@ -52,6 +52,11 @@
             </div>
         {% endblock %}
     </div>
+    <footer class="footer">
+        <div class="container-fluid">
+            <p class="text-muted">Sidus by <a href="https://twitter.com/VincentChalnot">@VincentChalnot</a></p>
+        </div>
+    </footer>
 {% endblock %}
 
 {% block javascripts %}
@@ -62,10 +67,10 @@
             'assets/jquery-ui/ui/minified/mouse.min.js'
             'assets/jquery-ui/ui/minified/sortable.min.js'
             '@MopaBootstrapBundle/Resources/public/bootstrap-sass/assets/javascripts/bootstrap.js'
-            '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
             '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
             '@MopaBootstrapBundle/Resources/public/components/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.js'
             '@MopaBootstrapBundle/Resources/public/components/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.fr.js'
+            '@SidusEAVModelBundle/Resources/public/js/bootstrap.collection.js'
             filter='?uglifyjs2'
         %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
