@@ -2,7 +2,6 @@
 
 namespace Sidus\EAVDemoBundle\Controller;
 
-use Doctrine\Common\Util\Debug;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Elastica\Query;
@@ -10,7 +9,7 @@ use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sidus\EAVDemoBundle\Entity\Data;
-use Sidus\EAVFilterBundle\Configuration\FilterConfigurationHandler;
+use Sidus\EAVFilterBundle\Configuration\ElasticaFilterConfigurationHandler;
 use Sidus\EAVModelBundle\Model\FamilyInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -40,39 +39,29 @@ class DataController extends Controller
     {
         $family = $this->getFamily($familyCode);
         $filterConfigName = 'sidus_eav_filter.configuration.' . $familyCode;
-        $isDefault = false;
         if (!$this->has($filterConfigName)) {
             throw new \UnexpectedValueException("Missing filter configuration for family {$family->getCode()}");
         }
-        /** @var FilterConfigurationHandler $filterConfig */
+        /** @var ElasticaFilterConfigurationHandler $filterConfig */
         $filterConfig = $this->get($filterConfigName);
 
-        if ($isDefault) {
-            $filterConfig->addSortable($family->getAttributeAsLabel()->getCode());
-        }
+//        $finder = $this->container->get('fos_elastica.finder.sidus.data');
+//        $familyQuery = new Query\Terms('familyCode', [$family->getMatchingCodes()]);
+//        $query = new \Elastica\Query();
+//        $query->setQuery($familyQuery);
+//        $query->addSort([
+//            'createdAt' => [
+//                'order' => 'desc',
+//            ],
+//        ]);
+//        $pager = $finder->findPaginated($query);
+//        $pager->setCurrentPage(1);
+//        $pager->setMaxPerPage(20);
+//        $datas = $pager;
 
-        $finder = $this->container->get('fos_elastica.finder.sidus.data');
-
-        $familyQuery = new Query\Terms('familyCode', [$family->getCode()]);
-        $query = new \Elastica\Query();
+        $query = $filterConfig->getESQuery();
+        $familyQuery = new Query\Terms('familyCode', [$family->getMatchingCodes()]);
         $query->setQuery($familyQuery);
-        $query->addSort([
-            'createdAt' => [
-                'order' => 'desc',
-            ],
-        ]);
-        $pager = $finder->findPaginated($query);
-        $pager->setCurrentPage(1);
-        $pager->setMaxPerPage(20);
-        $datas = $pager;
-
-        $qb = $filterConfig->getQueryBuilder();
-        $alias = $filterConfig->getAlias();
-        $qb
-            ->addSelect('value')
-            ->leftJoin($alias . '.values', 'value') // Manual join on user
-            ->andWhere("{$alias}.familyCode IN (:families)")
-            ->setParameter('families', $family->getMatchingCodes());
 
         // Create form with filters
         $builder = $this->createFormBuilder(null, [
@@ -80,15 +69,15 @@ class DataController extends Controller
             'csrf_protection' => false,
         ]);
         $form = $filterConfig->buildForm($builder);
-//        $filterConfig->handleRequest($request);
-//
-//        $adapter = new DoctrineORMAdapter($qb);
-//        $pager = new Pagerfanta($adapter);
-//        $pager->setMaxPerPage(20);
-//        $pager->setCurrentPage($request->get('page', 1));
-//
-//        /** @var Data[] $logs */
-//        $datas = $pager->getCurrentPageResults();
+        $filterConfig->handleRequest($request);
+
+        $adapter = new DoctrineORMAdapter($qb);
+        $pager = new Pagerfanta($adapter);
+        $pager->setMaxPerPage(20);
+        $pager->setCurrentPage($request->get('page', 1));
+
+        /** @var Data[] $logs */
+        $datas = $pager->getCurrentPageResults();
 
         return [
             'family' => $family,
