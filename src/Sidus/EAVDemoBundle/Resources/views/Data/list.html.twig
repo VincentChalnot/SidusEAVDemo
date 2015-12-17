@@ -4,6 +4,11 @@
     {% form_theme form 'SidusEAVDemoBundle:Data:form_theme.html.twig' %}
     {{ form_start(form) }}
         {{ form_widget(form.filters) }}
+        <div class="btn-group pull-right">
+            <a href="{{ path('sidus_eavdemo.data.list', {familyCode: family.code}) }}" class="btn btn-default"><i class="fa fa-times"></i> Reset</a>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-filter"></i> Filter</button>
+        </div>
+        {{ pagerfanta(pager, 'twitter_bootstrap3') }}
         <table class="table table-striped">
             <caption>{{ pager.count }} results</caption>
             <thead>
@@ -38,6 +43,7 @@
                 {% endfor %}
             </tbody>
         </table>
+        {{ pagerfanta(pager, 'twitter_bootstrap3') }}
     {{ form_end(form) }}
     <div class="btn-group clear">
         <a href="{{ path('sidus_eavdemo.data.create', {familyCode: family.code}) }}" class="btn btn-primary"><i class="fa fa-plus"></i> Create</a>

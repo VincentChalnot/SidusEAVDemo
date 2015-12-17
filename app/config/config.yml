@@ -89,3 +89,27 @@ mopa_bootstrap:
     form:
         render_required_asterisk: true
         render_optional_text: false
+
+fos_elastica:
+    clients:
+        default: { host: %fos_elastica.host%, port: %fos_elastica.port% }
+    indexes:
+        sidus:
+            types:
+                data:
+                    mappings:
+                        id: ~
+                        parent: ~
+                        familyCode: ~
+                        createdAt:
+                            type: date
+                        label: ~
+                    persistence:
+                        driver: orm
+                        model: Sidus\EAVDemoBundle\Entity\Data
+                        provider: ~
+                        listener:
+                            immediate: ~
+                        finder: ~
+#                        model_to_elastica_transformer:
+#                            service: sidus_eav_demo.elastica.serializer.data

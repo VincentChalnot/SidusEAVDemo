@@ -1,5 +1,10 @@
 parameters:
     sidus_eav_model.entity.data.class: Sidus\EAVDemoBundle\Entity\Data
     sidus_eav_model.entity.value.class: Sidus\EAVDemoBundle\Entity\Value
+    sidus_eav_demo.elastica.data_value_subscriber.class: Sidus\EAVDemoBundle\Events\DataValuesSubscriber
 
 services:
+    sidus_eav_demo.elastica.data_value_subscriber:
+        class: "%sidus_eav_demo.elastica.data_value_subscriber.class%"
+        tags:
+            - { name: kernel.event_subscriber }

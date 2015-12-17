@@ -11,6 +11,9 @@
     {% endblock %}
     {% block stylesheets %}
         {% stylesheets  'bundles/siduseavdemo/css/sidus.css'
+                        'bundles/pinanoselect2/css/select2.css'
+                        'bundles/pinanoselect2/css/select2-bootstrap.css'
+                        'bundles/samsonautocomplete/css/autocomplete.css'
                 filter='?uglifycss' filter='cssrewrite' %}
             <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
         {% endstylesheets %}
@@ -71,10 +74,33 @@
             '@MopaBootstrapBundle/Resources/public/components/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.js'
             '@MopaBootstrapBundle/Resources/public/components/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.fr.js'
             '@SidusEAVModelBundle/Resources/public/js/bootstrap.collection.js'
+            '@PinanoSelect2Bundle/Resources/public/js/select2.min.js'
+            '@PinanoSelect2Bundle/Resources/public/js/select2_locale_fr.js'
+            '@SamsonAutocompleteBundle/Resources/public/js/autocomplete.js'
             filter='?uglifyjs2'
         %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
+    <script>
+        RegExp.escape= function(s) {
+            return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+        };
+        $(document).ready(function() {
+            /* Initialize bootstrap collection sortable */
+            $('.bootstrap-collection').sortable({
+                update: function () {
+                    var pattern = $(this).data('input-pattern');
+                    var regex = new RegExp(RegExp.escape(pattern).replace('__name__', '\\d+'));
+                    $(this).find(':input').each(function (idx) {
+                        var newName = $(this).attr('name').replace(regex, pattern.replace('__name__', idx));
+                        $(this).attr('name', newName);
+                    });
+                }
+            });
+
+            $(".select2").samsonSelect2();
+        });
+    </script>
 {% endblock %}
 </body>
 </html>

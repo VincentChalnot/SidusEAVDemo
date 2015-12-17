@@ -31,9 +31,14 @@
         "stfalcon/tinymce-bundle": "dev-master",
         "white-october/pagerfanta-bundle": "~1.0",
         "samson/autocomplete-bundle": "~2.0.3",
-        "pinano/select2-bundle": "~3.5.2"
+        "pinano/select2-bundle": "~3.5.2",
+
+        "jms/serializer-bundle": "~1.1",
+        "friendsofsymfony/elastica-bundle": "~3.1",
+        "ruflin/elastica": "~2.2"
     },
     "require-dev": {
+        "fzaninotto/faker": "1.5.*",
         "sensio/generator-bundle": "~2.3",
         "symfony/phpunit-bridge": "~2.7"
     },

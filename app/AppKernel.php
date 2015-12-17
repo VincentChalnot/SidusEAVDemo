@@ -27,6 +27,10 @@ class AppKernel extends Kernel
             new Samson\Bundle\AutocompleteBundle\SamsonAutocompleteBundle(),
             new Pinano\Select2Bundle\PinanoSelect2Bundle(),
 
+            // Optimizations (should be optional)
+            new FOS\ElasticaBundle\FOSElasticaBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+
             // Sidus bundles
             new Sidus\EAVModelBundle\SidusEAVModelBundle(),
             new Sidus\EAVDemoBundle\SidusEAVDemoBundle(),

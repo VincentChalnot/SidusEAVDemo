@@ -2,8 +2,10 @@
 
 namespace Sidus\EAVDemoBundle\Controller;
 
+use Doctrine\Common\Util\Debug;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
+use Elastica\Query;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -49,6 +51,21 @@ class DataController extends Controller
             $filterConfig->addSortable($family->getAttributeAsLabel()->getCode());
         }
 
+        $finder = $this->container->get('fos_elastica.finder.sidus.data');
+
+        $familyQuery = new Query\Terms('familyCode', [$family->getCode()]);
+        $query = new \Elastica\Query();
+        $query->setQuery($familyQuery);
+        $query->addSort([
+            'createdAt' => [
+                'order' => 'desc',
+            ],
+        ]);
+        $pager = $finder->findPaginated($query);
+        $pager->setCurrentPage(1);
+        $pager->setMaxPerPage(20);
+        $datas = $pager;
+
         $qb = $filterConfig->getQueryBuilder();
         $alias = $filterConfig->getAlias();
         $qb
@@ -63,15 +80,15 @@ class DataController extends Controller
             'csrf_protection' => false,
         ]);
         $form = $filterConfig->buildForm($builder);
-        $filterConfig->handleRequest($request);
-
-        $adapter = new DoctrineORMAdapter($qb);
-        $pager = new Pagerfanta($adapter);
-        $pager->setMaxPerPage(50);
-        $pager->setCurrentPage($request->get('page', 1));
-
-        /** @var Data[] $logs */
-        $datas = $pager->getCurrentPageResults();
+//        $filterConfig->handleRequest($request);
+//
+//        $adapter = new DoctrineORMAdapter($qb);
+//        $pager = new Pagerfanta($adapter);
+//        $pager->setMaxPerPage(20);
+//        $pager->setCurrentPage($request->get('page', 1));
+//
+//        /** @var Data[] $logs */
+//        $datas = $pager->getCurrentPageResults();
 
         return [
             'family' => $family,
@@ -86,6 +103,7 @@ class DataController extends Controller
      * @param string $familyCode
      * @param Request $request
      * @return Response
+     * @throws \Exception
      */
     public function createAction($familyCode, Request $request)
     {
@@ -100,10 +118,12 @@ class DataController extends Controller
      * @param Data $data
      * @param Request $request
      * @return array|RedirectResponse
+     * @throws \Exception
      */
     public function editAction($familyCode, Data $data, Request $request)
     {
         $family = $this->getFamily($familyCode);
+        $this->getDoctrine()->getRepository('SidusEAVDemoBundle:Value')->findBy(['data' => $data]);
         if ($family->getCode() !== $data->getFamilyCode()) {
             throw new \UnexpectedValueException("Data family '{$data->getFamilyCode()}'' not matching admin family {$familyCode}");
         }
