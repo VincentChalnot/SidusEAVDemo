@@ -43,13 +43,13 @@
 {% endblock %}
 {% block main_container %}
     <div class="container-fluid">
-        {{ utilities.flash_messages() }}
         {% block main_content %}
             <div class="row">
                 <div class="col-lg-2 col-md-3 col-sm-4">
                     {% block left_menu %}{% endblock %}
                 </div>
                 <div class="col-lg-10 col-md-9 col-sm-8">
+                    {{ utilities.flash_messages() }}
                     {% block middle_content %}{% endblock %}
                 </div>
             </div>
@@ -81,6 +81,7 @@
         %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
+    {{ tinymce_init() }}
     <script>
         RegExp.escape= function(s) {
             return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');

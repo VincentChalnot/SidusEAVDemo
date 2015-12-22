@@ -37,6 +37,24 @@ class FilterConfigurationHandler extends BaseFilterConfigurationHandler
     }
 
     /**
+     * @param string $alias
+     * @return QueryBuilder
+     */
+    public function getQueryBuilder($alias = 'e')
+    {
+        if (!$this->queryBuilder) {
+            $this->alias = $alias;
+            $this->queryBuilder = $this->repository->createQueryBuilder($alias);
+            $this->queryBuilder
+                ->addSelect('value')
+                ->leftJoin($alias . '.values', 'value') // Manual join on values
+                ->andWhere("{$alias}.familyCode IN (:families)")
+                ->setParameter('families', $this->family->getMatchingCodes());
+        }
+        return $this->queryBuilder;
+    }
+
+    /**
      * @param array $configuration
      * @throws UnexpectedValueException
      */

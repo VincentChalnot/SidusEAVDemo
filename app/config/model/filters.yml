@@ -25,3 +25,47 @@ sidus_eav_filter:
 #                    attributes: [associatedProjects]
 #                tags:
 #                    attributes: [tags]
+        product:
+            entity: %sidus_eav_model.entity.data.class%
+            sortable:
+                - id
+                - familyCode
+                - createdAt
+                - name
+            fields:
+                id: ~
+                name: ~
+                family: ~
+                sku: ~
+                barCode: ~
+                constructorReference: ~
+
+        clothing:
+            entity: %sidus_eav_model.entity.data.class%
+            sortable:
+                - id
+                - familyCode
+                - createdAt
+                - name
+            fields:
+                id: ~
+                name: ~
+                family: ~
+                sku: ~
+                barCode: ~
+                constructorReference: ~
+
+        shirt:
+            entity: %sidus_eav_model.entity.data.class%
+            sortable:
+                - id
+                - familyCode
+                - createdAt
+                - name
+            fields:
+                id: ~
+                name: ~
+                family: ~
+                sku: ~
+                barCode: ~
+                constructorReference: ~

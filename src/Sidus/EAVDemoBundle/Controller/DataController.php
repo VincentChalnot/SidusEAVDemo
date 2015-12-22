@@ -4,9 +4,8 @@ namespace Sidus\EAVDemoBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
+use Elastica\Exception\Connection\HttpException;
 use Elastica\Query;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
-use Pagerfanta\Pagerfanta;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sidus\EAVDemoBundle\Entity\Data;
 use Sidus\EAVFilterBundle\Configuration\ElasticaFilterConfigurationHandler;
@@ -45,23 +44,14 @@ class DataController extends Controller
         /** @var ElasticaFilterConfigurationHandler $filterConfig */
         $filterConfig = $this->get($filterConfigName);
 
-//        $finder = $this->container->get('fos_elastica.finder.sidus.data');
-//        $familyQuery = new Query\Terms('familyCode', [$family->getMatchingCodes()]);
-//        $query = new \Elastica\Query();
-//        $query->setQuery($familyQuery);
-//        $query->addSort([
-//            'createdAt' => [
-//                'order' => 'desc',
-//            ],
-//        ]);
-//        $pager = $finder->findPaginated($query);
-//        $pager->setCurrentPage(1);
-//        $pager->setMaxPerPage(20);
-//        $datas = $pager;
-
-        $query = $filterConfig->getESQuery();
-        $familyQuery = new Query\Terms('familyCode', [$family->getMatchingCodes()]);
-        $query->setQuery($familyQuery);
+        try {
+            $this->get('fos_elastica.client')->getStatus();
+            $finder = $this->container->get('fos_elastica.finder.sidus.data');
+            $filterConfig->setFinder($finder);
+            $filterConfig->getESQuery(); // trigger usage of elastic search
+        } catch (HttpException $e) {
+            $this->addFlashMsg('warning', 'Elastic search is down, falling back to MySQL');
+        }
 
         // Create form with filters
         $builder = $this->createFormBuilder(null, [
@@ -71,19 +61,14 @@ class DataController extends Controller
         $form = $filterConfig->buildForm($builder);
         $filterConfig->handleRequest($request);
 
-        $adapter = new DoctrineORMAdapter($qb);
-        $pager = new Pagerfanta($adapter);
-        $pager->setMaxPerPage(20);
-        $pager->setCurrentPage($request->get('page', 1));
-
         /** @var Data[] $logs */
-        $datas = $pager->getCurrentPageResults();
+        $datas = $filterConfig->getResults();
 
         return [
             'family' => $family,
             'form' => $form->createView(),
             'datas' => $datas,
-            'pager' => $pager,
+            'pager' => $filterConfig->getPager(),
         ];
     }
 

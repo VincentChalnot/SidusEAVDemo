@@ -9,8 +9,7 @@ interface ElasticaFilterInterface
 {
     /**
      * @param FormInterface $form
-     * @param Query $query
-     * @param string $alias
+     * @param Query\Bool $query
      */
-    public function handleESForm(FormInterface $form, Query $query, $alias);
+    public function handleESForm(FormInterface $form, Query\Bool $query);
 }

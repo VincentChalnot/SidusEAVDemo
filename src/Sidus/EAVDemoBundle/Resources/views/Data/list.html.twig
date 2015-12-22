@@ -14,7 +14,6 @@
             <thead>
                 <tr>
                     <th>#{{ form_widget(form.sortable.id) }}</th>
-                    <th>Code{{ form_widget(form.sortable.code) }}</th>
                     <th>Family{{ form_widget(form.sortable.familyCode) }}</th>
                     <th>{{ family.attributeAsLabel }}{{ form_widget(form.sortable[family.attributeAsLabel.code]) }}</th>
                     <th>Created{{ form_widget(form.sortable.createdAt) }}</th>
@@ -25,7 +24,6 @@
                 {% for data in datas %}
                     <tr>
                         <td>{{ data.id }}</td>
-                        <td>{{ data.code }}</td>
                         <td>{{ data.family }}</td>
                         <td>{{ data }}</td>
                         <td>{{ data.createdAt | date() }}</td>
