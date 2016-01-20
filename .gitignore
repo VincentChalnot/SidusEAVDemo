@@ -9,6 +9,10 @@
 /composer.phar
 /vendor/
 /web/bundles/
+/web/assets/
+/web/css/
+/web/js/
+.sass-cache
 
 /.idea/workspace.xml
 /.idea/tasks.xml

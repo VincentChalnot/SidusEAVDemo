@@ -2212,12 +2212,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/VincentChalnot/SidusEAVModelBundle.git",
-                "reference": "6bef9ca819395e73ab1e4b39975f0b67833bbf8e"
+                "reference": "743c64860c2585207b10b69d187f5fec382ddaf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VincentChalnot/SidusEAVModelBundle/zipball/6bef9ca819395e73ab1e4b39975f0b67833bbf8e",
-                "reference": "6bef9ca819395e73ab1e4b39975f0b67833bbf8e",
+                "url": "https://api.github.com/repos/VincentChalnot/SidusEAVModelBundle/zipball/743c64860c2585207b10b69d187f5fec382ddaf1",
+                "reference": "743c64860c2585207b10b69d187f5fec382ddaf1",
                 "shasum": ""
             },
             "require": {
@@ -2251,7 +2251,7 @@
                 "eav",
                 "model"
             ],
-            "time": "2015-12-14 23:04:05"
+            "time": "2016-01-20 14:13:25"
         },
         {
             "name": "sidus/filter-bundle",
@@ -2264,7 +2264,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VincentChalnot/SidusFilterBundle/zipball/5aef8b51b7496830d2277f7f308c9ef16d029cdd",
+                "url": "https://api.github.com/repos/VincentChalnot/SidusFilterBundle/zipball/3d0a60f23dc2516311771984f7c8cfe679b8ba2f",
                 "reference": "5aef8b51b7496830d2277f7f308c9ef16d029cdd",
                 "shasum": ""
             },

@@ -19,7 +19,7 @@ sidus_eav_model:
                     class: tinymce
                     data-theme: advanced
         associatedProjects:
-            type: data
+            type: autocomplete_data
             multiple: true
             form_options:
                 placeholder: 'Select a project'
@@ -29,8 +29,6 @@ sidus_eav_model:
             form_options:
                 placeholder: 'Select a project'
                 family_code: project
-                attr:
-                    class: select2
         tags:
             multiple: true
         status:
