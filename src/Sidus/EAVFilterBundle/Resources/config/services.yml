@@ -1,7 +1,0 @@
-parameters:
-    sidus_filter.filter.class: Sidus\EAVFilterBundle\Filter\ElasticaFilter
-    sidus_eav_filter.configuration.class: Sidus\EAVFilterBundle\Configuration\ElasticaFilterConfigurationHandler
-
-    sidus_filter.filter.type.date_range.class: Sidus\EAVFilterBundle\Filter\Type\DateRangeFilterType
-    sidus_filter.filter.type.text.class: Sidus\EAVFilterBundle\Filter\Type\TextFilterType
-    sidus_filter.filter.type.choice.class: Sidus\EAVFilterBundle\Filter\Type\ChoiceFilterType

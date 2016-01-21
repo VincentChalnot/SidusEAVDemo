@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e232383c273a721107ca350a82e4eeee",
-    "content-hash": "5ed22108cbc4e7c015a30bfc66cea8b9",
+    "hash": "513891ce753ededefc19d9e9ea382266",
+    "content-hash": "7667c5a182ed5d9598a21aadf93bd565",
     "packages": [
         {
             "name": "components/jquery",
@@ -2305,6 +2305,59 @@
             "time": "2016-01-20 17:57:23"
         },
         {
+            "name": "sidus/eav-filter-bundle",
+            "version": "dev-master",
+            "target-dir": "Sidus/EAVFilterBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/VincentChalnot/SidusEAVFilterBundle.git",
+                "reference": "ca810373b133bbaf3f6c858c7a7078d8355f9605"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/VincentChalnot/SidusEAVFilterBundle/zipball/ca810373b133bbaf3f6c858c7a7078d8355f9605",
+                "reference": "ca810373b133bbaf3f6c858c7a7078d8355f9605",
+                "shasum": ""
+            },
+            "require": {
+                "friendsofsymfony/elastica-bundle": "~3.1",
+                "php": ">=5.4",
+                "ruflin/elastica": "~2.2",
+                "sidus/eav-model-bundle": "dev-master",
+                "sidus/filter-bundle": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Sidus\\EAVFilterBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Vincent Chalnot",
+                    "email": "vincent@sidus.fr",
+                    "homepage": "http://chalnot.fr",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Extension for sidus/eav-model-bundle and sidus/filter-bundle to handle the EAV model with a fallback to elastic search",
+            "homepage": "https://github.com/VincentChalnot/SidusEAVFilterBundle",
+            "keywords": [
+                "datagrid",
+                "doctrine",
+                "eav",
+                "elastica",
+                "elasticsearch",
+                "filter",
+                "sort"
+            ],
+            "time": "2016-01-21 15:57:36"
+        },
+        {
             "name": "sidus/eav-model-bundle",
             "version": "dev-master",
             "target-dir": "Sidus/EAVModelBundle",
@@ -3156,6 +3209,7 @@
         "sidus/eav-model-bundle": 20,
         "sidus/eav-bootstrap-bundle": 20,
         "sidus/filter-bundle": 20,
+        "sidus/eav-filter-bundle": 20,
         "stfalcon/tinymce-bundle": 20
     },
     "prefer-stable": false,

@@ -22,11 +22,10 @@
         "sidus/eav-model-bundle": "dev-master",
         "sidus/eav-bootstrap-bundle": "dev-master",
         "sidus/filter-bundle": "dev-master",
-        "stfalcon/tinymce-bundle": "dev-master",
+        "sidus/eav-filter-bundle": "dev-master",
 
-        "jms/serializer-bundle": "~1.1",
-        "friendsofsymfony/elastica-bundle": "~3.1",
-        "ruflin/elastica": "~2.2"
+        "stfalcon/tinymce-bundle": "dev-master",
+        "jms/serializer-bundle": "~1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "1.5.*",
