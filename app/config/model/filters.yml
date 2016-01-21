@@ -7,13 +7,14 @@ sidus_eav_filter:
                 - code
                 - familyCode
                 - createdAt
+                - updatedAt
                 - name
             fields:
                 code:
                     attributes: [code]
                 family: ~
                 name:
-                    attributes: [code]
+                    attributes: [name]
                 status:
                     attributes: [status]
                 description:
@@ -31,6 +32,7 @@ sidus_eav_filter:
                 - id
                 - familyCode
                 - createdAt
+                - updatedAt
                 - name
             fields:
                 id: ~
@@ -46,6 +48,7 @@ sidus_eav_filter:
                 - id
                 - familyCode
                 - createdAt
+                - updatedAt
                 - name
             fields:
                 id: ~
@@ -61,6 +64,7 @@ sidus_eav_filter:
                 - id
                 - familyCode
                 - createdAt
+                - updatedAt
                 - name
             fields:
                 id: ~

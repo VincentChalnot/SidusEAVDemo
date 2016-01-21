@@ -102,10 +102,13 @@ class DataController extends Controller
             throw new \UnexpectedValueException("Data family '{$data->getFamilyCode()}'' not matching admin family {$familyCode}");
         }
         $data->setValueClass($this->container->getParameter('sidus_eav_model.entity.value.class'));
-        $form = $this->createForm('sidus_data', $data);
+        $form = $this->createForm('sidus_data', $data, [
+            'label' => "sidus.family.{$family->getCode()}.edit.title",
+        ]);
 
         $form->handleRequest($request);
         if ($form->isValid()) {
+            $data->setUpdatedAt(new \DateTime());
             $em = $this->getManager();
             $em->persist($data);
             $em->flush();

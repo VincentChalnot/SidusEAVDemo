@@ -12,6 +12,7 @@ sidus_eav_model:
                 - associatedProjects
                 - associatedProjectAutocomplete
                 - tags
+                - isIndexable
 
         product:
             attributeAsLabel: name

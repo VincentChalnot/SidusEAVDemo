@@ -17,6 +17,7 @@
                     <th>Family{{ form_widget(form.sortable.familyCode) }}</th>
                     <th>{{ family.attributeAsLabel }}{{ form_widget(form.sortable[family.attributeAsLabel.code]) }}</th>
                     <th>Created{{ form_widget(form.sortable.createdAt) }}</th>
+                    <th>Updated{{ form_widget(form.sortable.updatedAt) }}</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -27,6 +28,7 @@
                         <td>{{ data.family }}</td>
                         <td>{{ data }}</td>
                         <td>{{ data.createdAt | date() }}</td>
+                        <td>{{ data.updatedAt ? data.updatedAt | date() }}</td>
                         <td>
                             <div class="btn-group btn-group-sm">
                                 <a href="{{ path('sidus_eavdemo.data.edit', {familyCode: family.code, id: data.id}) }}" class="btn btn-primary">

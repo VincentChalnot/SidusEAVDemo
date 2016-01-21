@@ -2,3 +2,8 @@ imports:
     - { resource: attributes.yml }
     - { resource: families.yml }
     - { resource: filters.yml }
+
+sidus_eav_model:
+    data_class: Sidus\EAVDemoBundle\Entity\Data
+    value_class: Sidus\EAVDemoBundle\Entity\Value
+    collection_type: sidus_bootstrap_collection

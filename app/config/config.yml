@@ -38,7 +38,7 @@ twig:
     strict_variables: "%kernel.debug%"
     form:
         resources:
-            - SidusEAVModelBundle:Form:fields.html.twig
+            - SidusEAVBootstrapBundle:Form:fields.html.twig
             - SidusFilterBundle:Form:fields.html.twig
 
 # Assetic Configuration
@@ -102,6 +102,8 @@ fos_elastica:
                         parent: ~
                         familyCode: ~
                         createdAt:
+                            type: date
+                        updatedAt:
                             type: date
                         label: ~
                     persistence:

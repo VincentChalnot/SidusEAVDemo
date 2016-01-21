@@ -1,37 +1,44 @@
 sidus_eav_model:
     attributes:
         name:
+            group: main
             required: true
             form_options:
                 attr:
                     data-help: 'This is a help block'
         code:
+            group: main
             type: unique
             required: true
         description:
+            group: details
             type: text
         releaseDate:
+            group: main
             type: date
         fullDescription:
+            group: details
             type: html
             form_options:
-                attr:
-                    class: tinymce
-                    data-theme: advanced
+                tinymce_theme: advanced
         associatedProjects:
+            group: associations
             type: autocomplete_data
             multiple: true
             form_options:
                 placeholder: 'Select a project'
                 family_code: project
         associatedProjectAutocomplete:
+            group: associations
             type: autocomplete_data
             form_options:
                 placeholder: 'Select a project'
                 family_code: project
         tags:
+            group: seo
             multiple: true
         status:
+            group: main
             type: choice
             form_options:
                 choices:
@@ -40,8 +47,12 @@ sidus_eav_model:
                     to_validate: To Validate
                     validated: Validated
                     published: Published
+        isIndexable:
+            group: seo
+            type: boolean
 
         sku:
+            group: main
             type: unique
             required: true
         constructorReference:
