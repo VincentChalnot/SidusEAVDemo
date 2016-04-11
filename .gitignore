@@ -10,3 +10,11 @@
 /vendor/
 /bin/
 /composer.phar
+
+# Custom rules
+.sass-cache
+/.idea
+/app/data/*
+!app/data/.gitkeep
+/web/assets
+/web/media

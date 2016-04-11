@@ -1,0 +1,11 @@
+{% extends 'DemoAdminBundle:Data:edit.html.twig' %}
+
+{% block form_actions %}
+    <div class="btn-group pull-right">
+        <a href="{{ admin_path(admin, 'list', {familyCode: family.code}) }}" class="btn btn-default">
+            {{ 'admin.back.label'|trans }}
+        </a>
+        <button type="submit" class="btn btn-primary">{{ 'admin.delete.label'|trans }}</button>
+    </div>
+    <div class="clear"></div>
+{% endblock %}

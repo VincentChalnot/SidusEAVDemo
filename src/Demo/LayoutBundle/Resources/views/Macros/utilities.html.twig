@@ -1,0 +1,23 @@
+
+{% macro flash_messages() %}
+    {% for name in ['error', 'warning', 'success', 'info'] %}
+        {% for message in app.session.flashBag.get(name) %}
+            <div class="alert alert-{{ name }}">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message|raw }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endmacro %}
+
+{% macro lock_form(inputId) %}
+    <script>
+        // Launched only on ajax calls when jQuery is already defined: lock
+        if (typeof $ != 'undefined') {
+            {% if inputId %}
+                // Lock navigation if form is updated
+                lockNavigationOnChange('#{{ inputId }}', '{{ 'form.abandon_changes.confirmation'|trans }}');
+            {% endif %}
+        }
+    </script>
+{% endmacro %}

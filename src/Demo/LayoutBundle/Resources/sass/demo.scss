@@ -1,0 +1,14 @@
+@import "compass";
+
+@import "siduseavbootstrap/sass/bootstrap";
+@import "siduseavbootstrap/sass/common";
+
+/*!
+ * Demo specific css theming
+ */
+@import "partials/theme";
+@import "partials/forms";
+@import "partials/datagrid";
+
+/* Additional third-party theming */
+@import "sidusfileupload/sass/fileupload";

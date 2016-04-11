@@ -1,0 +1,14 @@
+{% spaceless %}
+    <div class="btn-group btn-group-xs btn-group-nowrap">
+        {% block list_row_actions %}
+            <a href="{{ entity_path(result, 'edit') }}"
+               class="btn btn-primary" title="{{ 'admin.edit.title'|trans }}">
+                <i class="fa fa-edit"></i>
+            </a>
+            <a href="{{ entity_path(result, 'delete') }}"
+               class="btn btn-danger" title="{{ 'admin.delete.title'|trans }}">
+                <i class="fa fa-remove"></i>
+            </a>
+        {% endblock %}
+    </div>
+{% endspaceless %}

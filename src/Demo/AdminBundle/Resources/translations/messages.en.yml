@@ -1,0 +1,20 @@
+admin:
+    list_of: '%family% list'
+    action:
+        create:
+            label: Add
+
+    edit:
+        title: Edit
+    submit:
+        label: Save
+
+    delete:
+        title: Delete
+        label: Delete
+    back:
+        label: Back
+
+form:
+    abandon_changes:
+        confirmation: Êtes-vous certain de vouloir annuler vos modifications ?

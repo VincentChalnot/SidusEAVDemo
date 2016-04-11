@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    {% import "DemoLayoutBundle:Macros:utilities.html.twig" as utilities %}
+    {% block metas %}
+        <meta charset="{{ _charset }}">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Sidus EAV Demo">
+        <meta name="author" content="Vincent Chalnot">
+    {% endblock %}
+    <title>{% block title %}WebAgency{{ title is defined ? ' - ' ~ title }}{% endblock %}</title>
+    {% block stylesheets %}
+        {% stylesheets  'bundles/pinanoselect2/css/select2.css'
+                        'bundles/pinanoselect2/css/select2-bootstrap.css'
+                        'bundles/samsonautocomplete/css/autocomplete.css'
+                        'bundles/mopabootstrap/components/smalot-bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css'
+                        'bundles/demolayout/css/demo.css'
+                filter='?uglifycss' filter='cssrewrite' %}
+            <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+        {% endstylesheets %}
+    {% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+{% block main_menu %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ admin_path('data', 'index') }}">Sidus/EAVDemo</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                {% set activeFamily = family is defined ? family %}
+                <ul class="nav navbar-nav">
+                    {# @var f \Sidus\EAVModelBundle\Model\Family #}
+                    {% for f in get_root_families() %}
+                        {% set f = f.code is defined ? f : get_family(f) %}
+                        {% set fClass = (activeFamily and activeFamily.code == f.code ? 'active') ~ (f.children | length ? ' dropdown') %}
+                        <li {% if fClass %}class="{{ fClass }}"{% endif %}>
+                            {% if f.instantiable %}
+                                <a href="{{ admin_path(admin, 'list', {familyCode: f.code}) }}">{{ f|capitalize }}</a>
+                            {% else %}
+                                {{ f|capitalize }}
+                            {% endif %}
+                            {% if f.children | length %}
+                                <ul class="dropdown-menu">
+                                    {% for subF in f.children %}
+                                        <li>
+                                            <a href="{{ admin_path(admin, 'list', {familyCode: f.code}) }}">{{ f|capitalize }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+<div class="container-fluid">
+    <div id="main_container">
+        {{ utilities.flash_messages() }}
+        {% block main_container %}{% endblock %}
+    </div>
+</div>
+
+{% block javascripts %}
+    {% javascripts
+            'assets/jquery/jquery.min.js'
+            'assets/jquery-ui/ui/minified/core.min.js'
+            'assets/jquery-ui/ui/minified/widget.min.js'
+            'assets/jquery-ui/ui/minified/mouse.min.js'
+            'assets/jquery-ui/ui/minified/sortable.min.js'
+            'assets/jquery-ui/ui/minified/progressbar.min.js'
+            '@MopaBootstrapBundle/Resources/public/bootstrap-sass/assets/javascripts/bootstrap.js'
+            '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
+            '@MopaBootstrapBundle/Resources/public/components/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.js'
+            '@MopaBootstrapBundle/Resources/public/components/smalot-bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.fr.js'
+            '@SidusFileUploadBundle/Resources/public/vendor/jquery-file-upload/js/jquery.fileupload.js'
+            '@SidusFileUploadBundle/Resources/public/vendor/jquery-file-upload/js/jquery.fileupload-jquery-ui.js'
+            '@SidusFileUploadBundle/Resources/public/vendor/jquery-file-upload/js/jquery.iframe-transport.js'
+            '@SidusEAVBootstrapBundle/Resources/public/js/bootstrap.collection.js'
+            '@SidusEAVBootstrapBundle/Resources/public/js/sortable.collection.js'
+            '@SidusFileUploadBundle/Resources/public/js/jquery.fileupload.sidus.js'
+            '@PinanoSelect2Bundle/Resources/public/js/select2.min.js'
+            '@PinanoSelect2Bundle/Resources/public/js/select2_locale_fr.js'
+            '@SamsonAutocompleteBundle/Resources/public/js/autocomplete.js'
+            '@SidusEAVBootstrapBundle/Resources/public/js/autocomplete.combo.selector.js'
+            '@DemoLayoutBundle/Resources/public/js/init.datepickers.js'
+            '@DemoLayoutBundle/Resources/public/js/init.document.js'
+            '@DemoLayoutBundle/Resources/public/js/navigation.lock.js'
+            filter='?uglifyjs2'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {{ tinymce_init() }}
+{% endblock %}
+{% block additionnal_javascript %}{% endblock %}
+</body>
+</html>

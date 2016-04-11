@@ -1,0 +1,34 @@
+sidus_eav_model:
+    attributes:
+        title:
+            group: content
+            required: true
+
+        description:
+            group: content
+            type: html
+
+        image:
+            group: content
+            type: image
+
+        enabled:
+            group: metadata
+            type: boolean
+
+        tags:
+            group: metadata
+            multiple: true
+            form_options:
+                sortable: true
+
+        status:
+            group: metadata
+            type: choice
+            required: true
+            form_options:
+                choices:
+                    draft: Draft
+                    to_validate: To Validate
+                    validated: Validated
+                    published: Published

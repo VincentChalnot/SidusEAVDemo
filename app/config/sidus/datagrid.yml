@@ -1,0 +1,31 @@
+sidus_eav_data_grid:
+    configurations:
+        data:
+            family: test
+            filter_config:
+                sortable:
+                    - id
+                    - createdAt
+                    - updatedAt
+                fields: []
+            columns:
+                id:
+                    label: "#"
+                label:
+                    template: "DemoAdminBundle:Data:clickable.column.html.twig"
+                createdAt: ~
+                updatedAt: ~
+                actions:
+                    template: "DemoAdminBundle:Data:list.row.actions.html.twig"
+            actions:
+                create:
+                    form_type: admin_link
+                    label: admin.action.create.label
+                    action: create
+                    icon: plus
+                    attr:
+                        class: btn-primary
+                        data-target: tg_right
+            reset_button:
+                attr:
+                    data-target: tg_center

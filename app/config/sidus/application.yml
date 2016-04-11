@@ -1,0 +1,39 @@
+imports:
+    - { resource: attributes.yml }
+    - { resource: families.yml }
+    - { resource: admin.yml }
+    - { resource: variants.yml }
+    - { resource: datagrid.yml }
+    - { resource: assets.yml }
+
+sidus_eav_model:
+    data_class: Demo\EAVModelBundle\Entity\Data
+    value_class: Demo\EAVModelBundle\Entity\Value
+    collection_type: sidus_bootstrap_collection
+    default_context:
+        language: '%locale%'
+
+twig:
+    form:
+        resources:
+            - SidusEAVBootstrapBundle:Form:fields.html.twig
+            - SidusFilterBundle:Form:fields.html.twig
+            - SidusDataGridBundle:Form:fields.html.twig
+            - DemoLayoutBundle:Form:form.fields.html.twig
+
+doctrine:
+    dbal:
+        types:
+            sidus_family:
+                class: Sidus\EAVModelBundle\Doctrine\Types\FamilyType
+                commented: true
+
+mopa_bootstrap:
+    form:
+        render_required_asterisk: true
+        render_optional_text: false
+
+stfalcon_tinymce:
+    include_jquery: false
+    tinymce_jquery: false
+    use_callback_tinymce_init: true

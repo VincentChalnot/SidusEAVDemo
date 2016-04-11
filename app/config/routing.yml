@@ -1,3 +1,9 @@
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+sidus_admin:
+    resource: .
+    type: sidus_admin
+
+sidus_file_upload:
+    resource: "@SidusFileUploadBundle/Resources/config/routing.yml"
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"

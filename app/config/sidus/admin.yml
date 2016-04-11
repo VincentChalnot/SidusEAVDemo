@@ -1,0 +1,19 @@
+sidus_admin:
+    fallback_template: DemoAdminBundle:Base
+    configurations:
+        data:
+            controller: DemoAdminBundle:Data
+            entity: Demo\EAVModelBundle\Entity\Data
+            prefix: /
+            default_form_type: sidus_tabbed_data
+            actions:
+                index:
+                    path:     /
+                list:
+                    path:     /{familyCode}/list
+                create:
+                    path:     /{familyCode}/create
+                edit:
+                    path:     /{familyCode}/{id}/edit
+                delete:
+                    path:     /{familyCode}/{id}/delete

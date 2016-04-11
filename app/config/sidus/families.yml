@@ -1,0 +1,11 @@
+sidus_eav_model:
+    families:
+        test:
+            attributeAsLabel: title
+            attributes:
+                - title
+                - description
+                - enabled
+                - tags
+                - status
+                - image

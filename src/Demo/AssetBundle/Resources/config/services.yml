@@ -1,0 +1,11 @@
+parameters:
+    sidus_file_upload.resource.manager.class: Demo\AssetBundle\Manager\ResourceManager
+    demo_asset.twig.media.extension.class: Demo\AssetBundle\Twig\MediaExtension
+
+services:
+    demo_asset.twig.media.extension:
+        class: '%demo_asset.twig.media.extension.class%'
+        arguments:
+            - '@liip_imagine.filter.configuration'
+        tags:
+            - { name: twig.extension }

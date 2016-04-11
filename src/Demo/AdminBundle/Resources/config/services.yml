@@ -1,0 +1,21 @@
+parameters:
+    demo_admin.form.link.type.class: Demo\AdminBundle\Form\Type\AdminLink
+    demo_admin.form.image.type.class: Demo\AdminBundle\Form\Type\ImageType
+    demo_admin.form.variant_family_selector.type.class: Demo\AdminBundle\Form\Type\VariantFamilySelector
+
+services:
+    demo_admin.form.link.type:
+        class: '%demo_admin.form.link.type.class%'
+        arguments: ['@sidus_admin.routing.admin_router']
+        tags:
+          - { name: form.type, alias: admin_link }
+
+    demo_admin.form.image.type:
+        class: '%demo_admin.form.image.type.class%'
+        tags:
+          - { name: form.type, alias: demo_image }
+
+    demo_admin.form.variant_family_selector.type:
+        class: '%demo_admin.form.variant_family_selector.type.class%'
+        tags:
+          - { name: form.type, alias: demo_variant_family_selector }

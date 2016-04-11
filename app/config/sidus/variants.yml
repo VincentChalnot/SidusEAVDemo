@@ -1,0 +1,8 @@
+sidus_eav_variant:
+    routes:
+        # These routes are not actually used because we overrid the bundle's template to use admin routing
+        select: demo_admin.variant.select
+        create: demo_admin.variant.create
+        edit: demo_admin.variant.edit
+        delete: demo_admin.variant.delete
+    families: {}
