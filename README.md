@@ -1,6 +1,8 @@
 Sidus / EAV Demo
 ================
 
+See [Sidus/EAVModelBundle documentation](https://github.com/VincentChalnot/SidusEAVModelBundle) for further information
+
 ## Dev Installation
 
     $ composer install
